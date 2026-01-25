@@ -1,55 +1,55 @@
 #include "record.h"
 struct Record *add_one_node(struct Record *head){
-	//ÉêÇëÄÚ´æ 
+	//ç”³è¯·å†…å­˜ 
 	struct Record *newNode = (struct Record*)malloc(sizeof(struct Record));
-	//¼ìÑé 
+	//æ£€éªŒ 
 	if(newNode == NULL){
-		printf("ÄÚ´æ·ÖÅäÊ§°Ü£¡\n");
+		printf("å†…å­˜åˆ†é…å¤±è´¥ï¼\n");
 		return head; 
 	}
 	
-	//ÌîÈëÊı¾İ 
-	printf("ÇëÊäÈëĞÕÃû£º\n");
-	scanf("%19s",newNode->name); //19¿ØÖÆ¿í¶È È·±£'\0'µÄÎ»ÖÃ 
+	//å¡«å…¥æ•°æ® 
+	printf("è¯·è¾“å…¥å§“åï¼š\n");
+	scanf("%19s",newNode->name); //19æ§åˆ¶å®½åº¦ ç¡®ä¿'\0'çš„ä½ç½® 
 	
-	//ÑéÖ¤³É¼¨ÊäÈë 
-	printf("ÇëÊäÈë³É¼¨£º£¨0-100£©\n");
+	//éªŒè¯æˆç»©è¾“å…¥ 
+	printf("è¯·è¾“å…¥æˆç»©ï¼šï¼ˆ0-100ï¼‰\n");
 	do{// 
 		if(scanf("%d",&newNode->score)!= 1|| newNode->score>100||newNode->score<0){
-			printf("·Ç·¨ÊäÈë£¬ÇëÖØĞÂÊäÈë\n");	
+			printf("éæ³•è¾“å…¥ï¼Œè¯·é‡æ–°è¾“å…¥\n");	
 		}
 		else break;
 	} while(1);
 	
 	
-	//¼ÇÂ¼Ê±¼ä´Á <time.h> 
+	//è®°å½•æ—¶é—´æˆ³ <time.h> 
 	newNode->time = time(NULL);
-	printf("Â¼ÈëÖĞ...ÇëµÈ´ı\n");
+	printf("å½•å…¥ä¸­...è¯·ç­‰å¾…\n");
 	sleep(2);
 	
-	//Ö¸ÕëÓò
+	//æŒ‡é’ˆåŸŸ
 	newNode->next = NULL; 
 	
-	//¹ÒÔØ
+	//æŒ‚è½½
 	if(head == NULL){
 		return newNode;
 	}else{
-		//temp½á¹¹ÌåÖ¸Õë£¬ÒÆ¶¯ÖÁÁ´±íµÄ×îºóÒ»¸ö½Úµã 
-		//*²»ÄÜÄÃhead±¾ÉíÀ´ÒÆ¶¯£¬Òª²»È»Á´±í»á±»´İ»Ù£¬tempµÄÊ¹ÓÃÊÇÎªÁËÔ¤·ÀÕâÖÖÇé¿ö 
+		//tempç»“æ„ä½“æŒ‡é’ˆï¼Œç§»åŠ¨è‡³é“¾è¡¨çš„æœ€åä¸€ä¸ªèŠ‚ç‚¹ 
+		//*ä¸èƒ½æ‹¿headæœ¬èº«æ¥ç§»åŠ¨ï¼Œè¦ä¸ç„¶é“¾è¡¨ä¼šè¢«æ‘§æ¯ï¼Œtempçš„ä½¿ç”¨æ˜¯ä¸ºäº†é¢„é˜²è¿™ç§æƒ…å†µ 
 		struct Record *temp = head;
 		while(temp->next!=NULL)
 		temp=temp->next;
-		//Ñ­»·ÍêºótempÖ¸ÏòÁ´±íµÄ×îºóÒ»¸ö½Úµã 
-		temp->next = newNode;//¹ÒÉÏÈ¥
+		//å¾ªç¯å®ŒåtempæŒ‡å‘é“¾è¡¨çš„æœ€åä¸€ä¸ªèŠ‚ç‚¹ 
+		temp->next = newNode;//æŒ‚ä¸Šå»
 		return head; 
 	}
 	  
 }
-//ÊµÏÖ¶à¸öÊäÈë 
+//å®ç°å¤šä¸ªè¾“å…¥ 
 
 struct Record *get_info(struct Record *head){ 
 	int count;
-	printf("ÇëÊäÈëÄãÒªÂ¼ÈëµÄÑ§Ô±µÄ¸öÊı(0-100)£º\n");
+	printf("è¯·è¾“å…¥ä½ è¦å½•å…¥çš„å­¦å‘˜çš„ä¸ªæ•°(0-100)ï¼š\n");
 	scanf("%d",&count);
 	struct Record *tp; 
 	for(int i = 0;i<count;i++){
@@ -58,100 +58,100 @@ struct Record *get_info(struct Record *head){
 	tp = head;
 	//
 	while(tp->next != NULL)tp=tp->next;
-	printf("¼ÇÂ¼¡¾%d¡¿: ĞÕÃû£º%s\t\t|·ÖÊı£º%d\t\t|Ê±¼ä£º%s",i+1,tp->name,tp->score,ctime(&(tp->time)));
+	printf("è®°å½•ã€%dã€‘: å§“åï¼š%s\t\t|åˆ†æ•°ï¼š%d\t\t|æ—¶é—´ï¼š%s",i+1,tp->name,tp->score,ctime(&(tp->time)));
 	}
 	return head;
 }
-//Êı¾İÍ³¼Æ·ÖÎö£º
+//æ•°æ®ç»Ÿè®¡åˆ†æï¼š
 void statistic_analysis(struct Record *head){
 	
 	if(head == NULL){
-		printf("ÔİÎŞÊı¾İ½øĞĞÍ³¼Æ·ÖÎö\n");
+		printf("æš‚æ— æ•°æ®è¿›è¡Œç»Ÿè®¡åˆ†æ\n");
 		return;
 	}
-	//Êı¾İÉèÖÃ 
+	//æ•°æ®è®¾ç½® 
 	double sum = 0;
-	int count = 0;//×ÜÈËÊı
+	int count = 0;//æ€»äººæ•°
 	int cnt = 0; 
 	int max = -1;
 	char top_name[20];
 	double average = 0; 
 	struct Record *p = head;
 	
-	//´¦ÀíÊı¾İ 
+	//å¤„ç†æ•°æ® 
 	while(p!=NULL){
-		//ÇóºÍ 
+		//æ±‚å’Œ 
 		sum+= p->score;
-		//Çó×î´ó£¬ÕÒ×´Ôª 
+		//æ±‚æœ€å¤§ï¼Œæ‰¾çŠ¶å…ƒ 
 		if(p->score>max){
 			max = p->score;
-			//°ÑÕâÒ»ÂÖÖĞµÄ×î¸ß·ÖÊıµÄÈËµÄĞÕÃûÒ²¼ÇÏÂÀ´£¬¿ÉÒÔ¼ò»¯Á÷³Ì£¬Á´±í²»·½±ãµÃµ½j
-			//Èç¹û²»ÕâÃ´×ö¶øÊÇÓÃ¼ÆÊıÆ÷µÄ·½·¨¾ÍÒªÔÚ±éÀúÒ»±éÁ´±í 
+			//æŠŠè¿™ä¸€è½®ä¸­çš„æœ€é«˜åˆ†æ•°çš„äººçš„å§“åä¹Ÿè®°ä¸‹æ¥ï¼Œå¯ä»¥ç®€åŒ–æµç¨‹ï¼Œé“¾è¡¨ä¸æ–¹ä¾¿å¾—åˆ°j
+			//å¦‚æœä¸è¿™ä¹ˆåšè€Œæ˜¯ç”¨è®¡æ•°å™¨çš„æ–¹æ³•å°±è¦åœ¨éå†ä¸€éé“¾è¡¨ 
 			strcpy(top_name,p->name);
 		}
-		count++;//ÓÃÓÚ¼ÇÂ¼ÈËÊı£¬Æ½¾ù³É¼¨
-		//²»ºÏ¸ñÈËÊı
+		count++;//ç”¨äºè®°å½•äººæ•°ï¼Œå¹³å‡æˆç»©
+		//ä¸åˆæ ¼äººæ•°
 		if(p->score<90)
 		cnt++;
-		//¼ÙÉèÎÒÒª¼ÇÏÂÕâĞ©²»ºÏ¸ñµÄÈËµÄ¾ßÌåĞÅÏ¢£¬ÎÒ¾ÍĞèÒªÔÚ½¨Ò»¸ö²»ºÏ¸ñµÄÁ´±íÓÃÓÚÊä³ö£¨ÕâÑù¸ü·½±ãÒ»µã£©
+		//å‡è®¾æˆ‘è¦è®°ä¸‹è¿™äº›ä¸åˆæ ¼çš„äººçš„å…·ä½“ä¿¡æ¯ï¼Œæˆ‘å°±éœ€è¦åœ¨å»ºä¸€ä¸ªä¸åˆæ ¼çš„é“¾è¡¨ç”¨äºè¾“å‡ºï¼ˆè¿™æ ·æ›´æ–¹ä¾¿ä¸€ç‚¹ï¼‰
 		p=p->next; 
 	}
 	
-	//Æ½¾ù·Ö 
-	average = sum / count;//¿ªÊ¼Íü¼Ç¸ÄÁË»¹ÊÇ /3.0 
+	//å¹³å‡åˆ† 
+	average = sum / count;//å¼€å§‹å¿˜è®°æ”¹äº†è¿˜æ˜¯ /3.0 
 	
-	//Êä³ö 
-	printf("\n[Í³¼Æ½á¹û]\n");
-	printf("Ñ§Ô±Æ½¾ù·Ö£º%3lf\n",average);
-	printf("×´Ôª£º%s |·ÖÊı£º%d\n",top_name,max);
-	printf("²»ºÏ¸ñÈËÊı£º%d\n",cnt); 
+	//è¾“å‡º 
+	printf("\n[ç»Ÿè®¡ç»“æœ]\n");
+	printf("å­¦å‘˜å¹³å‡åˆ†ï¼š%3lf\n",average);
+	printf("çŠ¶å…ƒï¼š%s |åˆ†æ•°ï¼š%d\n",top_name,max);
+	printf("ä¸åˆæ ¼äººæ•°ï¼š%d\n",cnt); 
 	printf("[----------------------]\n");
 }
 
 
-//¹Ì»¯ĞÅÏ¢ 
+//å›ºåŒ–ä¿¡æ¯ 
 void save_to_file(struct Record *head){
-	//´æÈëÎÄ¼ş£¬²¢¾ö¶¨¼ÆÈëÄ£Ê½ 
+	//å­˜å…¥æ–‡ä»¶ï¼Œå¹¶å†³å®šè®¡å…¥æ¨¡å¼ 
 	FILE *fp = fopen("students.txt","w");
 	
-	//¼ìÑé 
+	//æ£€éªŒ 
 	if(fp == NULL){
-		printf("ÎÄ¼ş´ò¿ªÊ§°Ü\n");
+		printf("æ–‡ä»¶æ‰“å¼€å¤±è´¥\n");
 		return; 
 	}
 	
-	//´æÊı¾İµÄ¹ı³Ì 
+	//å­˜æ•°æ®çš„è¿‡ç¨‹ 
 	struct Record *p = head;
 	while(p != NULL){
 		fprintf(fp,"%s %d %ld\n",p->name,p->score,(long)(p->time));
 		p=p->next;
 	}
 	
-	//¹Ø±ÕÎÄ¼ş 
+	//å…³é—­æ–‡ä»¶ 
 	fclose(fp);
-	printf("---Êı¾İÒÑ¾­±£´æµ½Ó²ÅÌ---\n"); 
+	printf("---æ•°æ®å·²ç»ä¿å­˜åˆ°ç¡¬ç›˜---\n"); 
 	
 }
 
-//¶ÁÈ¡ÎÄ¼ş
-//ÊµÏÖÂß¼­£ºÖØ½¨»ğ³µ£¬Ã¿¶Áµ½Ò»ĞĞ £¬¾ÍµÃmallocÒ»¸ö½Úµã£¬²¢°ÑËü¹ÒÔØµ½Ä©Î² 
-//ÊµÏÖ¹¦ÄÜ£º°Ñ´ÓÎÄ¼şÄÚ¶Áµ½µÄ¶«Î÷´æÈëµ½ĞÂ½¨µÄ»ğ³µÄÚ 
+//è¯»å–æ–‡ä»¶
+//å®ç°é€»è¾‘ï¼šé‡å»ºç«è½¦ï¼Œæ¯è¯»åˆ°ä¸€è¡Œ ï¼Œå°±å¾—mallocä¸€ä¸ªèŠ‚ç‚¹ï¼Œå¹¶æŠŠå®ƒæŒ‚è½½åˆ°æœ«å°¾ 
+//å®ç°åŠŸèƒ½ï¼šæŠŠä»æ–‡ä»¶å†…è¯»åˆ°çš„ä¸œè¥¿å­˜å…¥åˆ°æ–°å»ºçš„ç«è½¦å†… 
 struct Record* load_from_file(){
-	//¾ö¶¨¶ÁÈ¡µÄÎÄ¼ş 
+	//å†³å®šè¯»å–çš„æ–‡ä»¶ 
 	FILE *fp = fopen("students.txt","r");
 	
-	//¼ìÑé 
+	//æ£€éªŒ 
 	if(fp==NULL){
-		printf("ÔİÊ±ÎŞÀúÊ·Êı¾İ¡£\n");
+		printf("æš‚æ—¶æ— å†å²æ•°æ®ã€‚\n");
 		return NULL; 
 	}
 	
-	//ÖØ½¨¹ı³Ì 
-	struct Record *head = NULL,*tail = NULL; //Ê¹ÓÃÕ»µÄË¼Î¬£¬¼ò»¯±éÀú´ÎÊı 
+	//é‡å»ºè¿‡ç¨‹ 
+	struct Record *head = NULL,*tail = NULL; //ä½¿ç”¨æ ˆçš„æ€ç»´ï¼Œç®€åŒ–éå†æ¬¡æ•° 
 	char name[20];  
 	int score;
 	long t;
-	//·¢ÏÖÊı¾İ£¬Á¢¿ÌÉêÇëĞÂ³µÏá 
+	//å‘ç°æ•°æ®ï¼Œç«‹åˆ»ç”³è¯·æ–°è½¦å¢ 
 	while(fscanf(fp,"%s %d %ld\n",name,&score,&t)!= EOF){
 		struct Record *newNode = (struct Record*)malloc(sizeof(struct Record));
 		strcpy(newNode->name,name);
@@ -159,63 +159,63 @@ struct Record* load_from_file(){
 		newNode->time = (time_t)t;
 		newNode->next = NULL;
 		
-		//¹ÒÔØÂß¼­ 
+		//æŒ‚è½½é€»è¾‘ 
 		if(head == NULL){
-			head = newNode; //µÚÒ»½Ú³µÏá
-			tail = newNode; //µÚÒ»½Ú³µÏá 
+			head = newNode; //ç¬¬ä¸€èŠ‚è½¦å¢
+			tail = newNode; //ç¬¬ä¸€èŠ‚è½¦å¢ 
 		}else{
-			tail->next = newNode; //¹ÒÔØ 
-			tail = newNode;  //¸üĞÂÎ²°ÍÎ»ÖÃ 
+			tail->next = newNode; //æŒ‚è½½ 
+			tail = newNode;  //æ›´æ–°å°¾å·´ä½ç½® 
 		} 
 	}
 	
 
 	fclose(fp);
 	
-	return head;//·µ»ØÖµ 
+	return head;//è¿”å›å€¼ 
 	
 }
 
-//ĞŞ¸Ä£ºÍ¨¹ıÈ·¶¨ĞÕÃûÀ´ĞŞ¸Ä 
+//ä¿®æ”¹ï¼šé€šè¿‡ç¡®å®šå§“åæ¥ä¿®æ”¹ 
 void find_and_modify(struct Record *head){
-	//¼ì²éÁ´±í 
+	//æ£€æŸ¥é“¾è¡¨ 
 	if(head==NULL){
-		printf("µ±Ç°ÎŞÈÎºÎÑ§Ô±ĞÅÏ¢\n");
+		printf("å½“å‰æ— ä»»ä½•å­¦å‘˜ä¿¡æ¯\n");
 		return; 
 	} 
-	//ÊäÈëÃû×Ö 
+	//è¾“å…¥åå­— 
 	char targetName[20];
-	//ÌáÊ¾ĞÔÊäÈë 
-	printf("ÇëÊäÈëÑ§Ô±µÄĞÕÃû£º");
+	//æç¤ºæ€§è¾“å…¥ 
+	printf("è¯·è¾“å…¥å­¦å‘˜çš„å§“åï¼š");
 	scanf("%s",targetName);
 	
 	struct Record *p = head;
 	while(p!=NULL){
-		//strcmp(const *char1,const *char2)  0ÊÇÏàÍ¬ 1ÊÇ²»Í¬ 
+		//strcmp(const *char1,const *char2)  0æ˜¯ç›¸åŒ 1æ˜¯ä¸åŒ 
 		if(strcmp(p->name,targetName)==0){
-			printf("ÕÒµ½%s£¡µ±·ÖÊıÊÇ%d\n",p->name,p->score);
-			//¸Ä·ÖÊı 
-			printf("ÇëÊäÈëĞÂµÄ·ÖÊı£º\n");
+			printf("æ‰¾åˆ°%sï¼å½“åˆ†æ•°æ˜¯%d\n",p->name,p->score);
+			//æ”¹åˆ†æ•° 
+			printf("è¯·è¾“å…¥æ–°çš„åˆ†æ•°ï¼š\n");
 			scanf("%d",&p->score);
-			//¸ÄÊ±¼ä
+			//æ”¹æ—¶é—´
 			p->time = time(NULL); 
 			break;
 	 	}else{
 	 		p = p->next; 
 	 	}
 	}
-	//ÅÜÍêºó»¹Ã»ÕÒµ½·¢³öÌáÊ¾ 
-	if(!p) printf("²éÎŞ´ËÈË£¬Çë¼ì²éÊÇ·ñÊäÈëÕıÈ·\n");
+	//è·‘å®Œåè¿˜æ²¡æ‰¾åˆ°å‘å‡ºæç¤º 
+	if(!p) printf("æŸ¥æ— æ­¤äººï¼Œè¯·æ£€æŸ¥æ˜¯å¦è¾“å…¥æ­£ç¡®\n");
 
 }
 
 
-//±éÀúÕ¹Ê¾ ctime()º¯Êı×Ô´ø\n 
-//Á´±í±éÀúµÄÂß¼­×î»ù´¡ 
+//éå†å±•ç¤º ctime()å‡½æ•°è‡ªå¸¦\n 
+//é“¾è¡¨éå†çš„é€»è¾‘æœ€åŸºç¡€ 
 void show(struct Record *head){
 	struct Record*p = head;
 	while(p!= NULL){
-		printf("ĞÕÃû£º%s |·ÖÊı£º%d |Ê±¼ä£º%s",p->name,p->score,ctime(&(p->time)));
+		printf("å§“åï¼š%s |åˆ†æ•°ï¼š%d |æ—¶é—´ï¼š%s",p->name,p->score,ctime(&(p->time)));
 		p=p->next;
 	}
 }
@@ -230,36 +230,31 @@ void free_list(struct Record *head){
 	} 
 }
 
-//ÊµÏÖ¹¦ÄÜ£ºÉ¾³ı½Úµã 
-//×¼±¸¹¤×÷£ºÈ·¶¨É¾³ıµÄ½Úµã ÒÆ¶¯µ½µØ·½ 
+//å®ç°åŠŸèƒ½ï¼šåˆ é™¤èŠ‚ç‚¹ 
+//å‡†å¤‡å·¥ä½œï¼šç¡®å®šåˆ é™¤çš„èŠ‚ç‚¹ ç§»åŠ¨åˆ°åœ°æ–¹ 
 struct Record *delete_node(struct Record *head){
-	if(head == NULL){
-	printf("ÔİÎŞÑ§Ô±£¬²»ÄÜÖ´ĞĞÉ¾³ı²Ù×÷\n");
-	return NULL;
-	}
-
-	struct Record *p = head,*temp;
-	char delete_name[20];
-	printf("ÇëÊäÈëÒªÉ¾³ıµÄÑ§Ô±µÄĞÕÃû£º\n");
-	scanf("%s",delete_name);
+	char target[20];
+	printf("è¯·è¾“å…¥è¦é€€å­¦çš„å­¦å‘˜å§“åï¼š\n");
+	scanf("%s",target);
 	
-	//Èç¹ûÖ»Ê£Ò»¸öÈË 
-	if(p->next==NULL&&!strcmp(p->name,delete_name)){
-		free(p);
-		printf("ÒÑÉ¾³ı£¬ÏÖÔÚÃ»ÓĞÑ§Ô±ÁË\n");
-		return NULL; 
+	struct Record *p = head;
+	struct Record *pre = NULL;
+	while(p != NULL){
+		if(strcmp(p->name,target)==0){
+			//æ‰¾åˆ°äº†
+			if(p == head){
+				head = p->next;
+			} else {
+				pre->next = p->next;
+			}
+			free(p);
+			printf("å­¦å‘˜ %s å·²ç»æˆåŠŸé€€å­¦\n",target);
+			return head;
+		}
+		pre = p;
+		p = p->next;
 	}
-	//Á½¸ö¼°ÒÔÉÏ£¬pÒªÖ¸ÏòÒªÉ¾³ıµÄ½ÚµãµÄÉÏÒ»¸ö½Úµã²ÅĞĞ£¬²ÅÄÜ¹ÒÔØÉÏ 
-	while(strcmp((p->next->name),delete_name)&&p!=NULL) p = p->next;
-	if(!p){
-		printf("²éÎŞ´ËÈË£¬Çë¼ì²éÊÇ·ñÊäÈëÕıÈ·\n");
-	}else{
-		temp = p->next;
-		p->next = temp->next;
-		free(temp);
-		printf("É¾³ı³É¹¦\n");
-	}
-
+	printf("æŸ¥æ— æ­¤äººï¼Œæ— æ³•åˆ é™¤ã€‚\n"); 
 	return head;
 };
 
@@ -267,25 +262,33 @@ struct Record *delete_info(struct Record *head){
 	struct Record *p=head;
 	int std_count = 0;
 	
-	//ÎŞÑ§Ô± 
+	//æ— å­¦å‘˜ 
 	
-	//Ñ§Ô±ÈËÊı 
+	//å­¦å‘˜äººæ•° 
 	while(p!=NULL){
 		p = p->next;
 		std_count++;
 	}
-	printf("%d",std_count);
-	//Ñ¡ÔñÉ¾³ıÈËÊı£¬ÅúÁ¿É¾³ı 
+
+	//é€‰æ‹©åˆ é™¤äººæ•°ï¼Œæ‰¹é‡åˆ é™¤ 
 	int count = 0;
-	printf("ÇëÊäÈëÄãÒªÉ¾³ıµÄÑ§Ô±µÄ¸öÊı(0-%d)£º\n",std_count); //ÌáÊ¾
-	//¼ìÑé 
-	scanf("%d",&count);
-	while(count>std_count&&count<0){
-		printf("ÇëÖØĞÂÊäÈë£º\n");
-		scanf("%d",&count);
+	printf("è¯·è¾“å…¥ä½ è¦åˆ é™¤çš„å­¦å‘˜çš„ä¸ªæ•°(0-%d)ï¼š\n",std_count); //æç¤º
+	//æ£€éªŒ 
+	while(1){
+		if(scanf("%d",&count)!=1){//å¦‚æœè¾“å…¥çš„ä¸æ˜¯æ•´æ•° 
+			printf("è¯·è¾“å…¥ä¸€ä¸ªæ•´æ•°ï¼ˆ0-%dï¼‰\n",std_count);
+			//æ¸…ç©ºç¼“å­˜åŒº
+			while(getchar()!='\n');
+			continue; 
+		}
+		if(count>std_count||count<0){
+			printf("è¾“å…¥è¶…å‡ºèŒƒå›´ï¼Œè¯·é‡æ–°è¾“å…¥ï¼ˆ0-%dï¼‰\n",std_count);
+			scanf("%d",&count);
+		}else break;
 	}
 	
-	//½øĞĞÉ¾³ı²Ù×÷ 
+	
+	//è¿›è¡Œåˆ é™¤æ“ä½œ 
 	for(int i=0;i<count;i++){
 		head = delete_node(head);
 	}
