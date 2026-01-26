@@ -20,7 +20,8 @@ void menu(struct Record *head){
 		printf("\t6.查看学员信息\t\n");
 		printf("\t7.删除学员信息\t\n");
 		printf("\t8.学员信息排序\t\n");
-		printf("\t9.不合格学员\t\n");
+		printf("\t9.不合格学员\t\n"); 
+		printf("\t10.按名字查学员信息\t\n"); 
 		printf("\t0.退出程序\t\n");                           
 		printf("\t--------------------\t\n");
 		printf("\t请输入你的选项\t\n");
@@ -55,6 +56,9 @@ void menu(struct Record *head){
 				break;
 			case 9:
 				find_fail_student(head);
+				break;
+			case 10:
+				search_by_name(head);
 				break; 
 			case 0:
 				printf("你真的要退出吗\n");
